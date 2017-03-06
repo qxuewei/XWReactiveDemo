@@ -14,9 +14,18 @@
 
 @implementation Calcualator
 
--(Calcualator *(^)(double))add{
+- (Calcualator *(^)(double))add{
+    
     return ^(double x){
         self.result += x;
+        return self;
+    };
+}
+
+- (Calcualator *(^)(double))subtract {
+    
+    return ^(double x){
+        self.result *= x;
         return self;
     };
 }

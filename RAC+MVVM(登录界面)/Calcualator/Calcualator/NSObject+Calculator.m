@@ -7,7 +7,11 @@
 //
 
 #import "NSObject+Calculator.h"
-
+#import "Calcualator.h"
 @implementation NSObject (Calculator)
-
++ (double)xw_calculator:(void(^)(Calcualator *))block{
+    Calcualator *calculator = [[Calcualator alloc] init];
+    block(calculator);
+    return calculator.result;
+}
 @end

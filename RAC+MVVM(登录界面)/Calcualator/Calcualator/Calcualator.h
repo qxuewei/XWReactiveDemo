@@ -15,6 +15,5 @@
 
 - (Calcualator *(^)(double))subtract;
 
-- (double)xw_calcualator:(void(^)(Calcualator *))block;
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class Calcualator;
 @interface NSObject (Calculator)
+
++ (double)xw_calculator:(void(^)(Calcualator *))block;
 
 @end
