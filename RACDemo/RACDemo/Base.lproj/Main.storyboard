@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5sg-Do-G0p">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOB-Yi-Jna">
+                                <rect key="frame" x="153" y="318.5" width="69" height="30"/>
+                                <state key="normal" title="To TwoVC"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9W-HT-E59">
+                                <rect key="frame" x="37.5" y="224.5" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5gB-Du-e8A"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW4-Q4-5fI">
+                                <rect key="frame" x="146" y="142" width="82" height="30"/>
+                                <state key="normal" title="发送123noti"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YOB-Yi-Jna" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0TE-9V-maS"/>
+                            <constraint firstItem="YOB-Yi-Jna" firstAttribute="centerX" secondItem="q9W-HT-E59" secondAttribute="centerX" id="4Pe-cw-GNi"/>
+                            <constraint firstItem="q9W-HT-E59" firstAttribute="top" secondItem="cW4-Q4-5fI" secondAttribute="bottom" constant="52.5" id="4fd-YU-MYv"/>
+                            <constraint firstItem="q9W-HT-E59" firstAttribute="centerX" secondItem="cW4-Q4-5fI" secondAttribute="centerX" id="5CU-9d-0Hq"/>
+                            <constraint firstItem="YOB-Yi-Jna" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WL6-hk-yZy"/>
+                            <constraint firstItem="YOB-Yi-Jna" firstAttribute="top" secondItem="q9W-HT-E59" secondAttribute="bottom" constant="64" id="jbF-iY-K3k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VrH-y9-kzq"/>
+                    <connections>
+                        <outlet property="sent123NotiBtn" destination="cW4-Q4-5fI" id="kZc-da-TLr"/>
+                        <outlet property="testTF" destination="q9W-HT-E59" id="SGB-aL-R5e"/>
+                        <outlet property="toTwoVCBtn" destination="YOB-Yi-Jna" id="Jln-B6-tEa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="126.38680659670166"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uba-4p-a1n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5sg-Do-G0p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o9B-kU-eVD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wiv-FQ-Pkm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMS-20-Gv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="126.38680659670166"/>
+        </scene>
+    </scenes>
+</document>
