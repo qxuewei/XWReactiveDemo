@@ -19,9 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    double result = [[self class] xw_calculator:^(Calcualator *cal) {
-        cal.add(1).add(2).add(3).subtract(2);
-    }];
+    Calcualator *cal = [[Calcualator alloc] init];
+    double result = [[cal calculator:^double(double result) {
+        result += 5;
+        result *= 5;
+        return result;
+    }] result];
+    
+//    double result = [[self class] xw_calculator:^(Calcualator *cal) {
+//        cal.add(1).add(2).add(3).subtract(2);
+//    }];
     NSLog(@"结果:%.2f",result);
 //    Calcualator *cal = [[Calcualator alloc] init];
 //    cal.add(10).add(10);

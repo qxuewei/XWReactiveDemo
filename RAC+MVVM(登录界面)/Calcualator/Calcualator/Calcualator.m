@@ -13,6 +13,10 @@
 @end
 
 @implementation Calcualator
+- (instancetype)calculator:(double(^)(double))block{
+    _result = block(_result);
+    return self;
+}
 
 - (Calcualator *(^)(double))add{
     

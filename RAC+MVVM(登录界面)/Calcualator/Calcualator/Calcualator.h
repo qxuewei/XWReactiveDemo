@@ -15,5 +15,7 @@
 
 - (Calcualator *(^)(double))subtract;
 
+- (instancetype)calculator:(double(^)(double))block;
+
 
 @end
