@@ -26,6 +26,8 @@
 		2EAB0A991E6E7E660047252D /* flags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EAB0A981E6E7E660047252D /* flags.plist */; };
 		2EAB0A9B1E6E7EC80047252D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EAB0A9A1E6E7EC80047252D /* Info.plist */; };
 		2EAB0A9E1E6E7EEA0047252D /* Flag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB0A9D1E6E7EEA0047252D /* Flag.m */; };
+		2EAB0AA41E6EA6E20047252D /* XWGCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB0AA11E6EA6E20047252D /* XWGCDGroup.m */; };
+		2EAB0AA51E6EA6E20047252D /* XWGCDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAB0AA31E6EA6E20047252D /* XWGCDManager.m */; };
 		D2089EEF38C8450A0615800A /* libPods-RACDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC0154F2FD388A3F98A48BE /* libPods-RACDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,10 @@
 		2EAB0A9A1E6E7EC80047252D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EAB0A9C1E6E7EEA0047252D /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flag.h; sourceTree = "<group>"; };
 		2EAB0A9D1E6E7EEA0047252D /* Flag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flag.m; sourceTree = "<group>"; };
+		2EAB0AA01E6EA6E20047252D /* XWGCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWGCDGroup.h; sourceTree = "<group>"; };
+		2EAB0AA11E6EA6E20047252D /* XWGCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWGCDGroup.m; sourceTree = "<group>"; };
+		2EAB0AA21E6EA6E20047252D /* XWGCDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWGCDManager.h; sourceTree = "<group>"; };
+		2EAB0AA31E6EA6E20047252D /* XWGCDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWGCDManager.m; sourceTree = "<group>"; };
 		55F43A1DA71E4BA9D3E3DFD4 /* Pods-RACDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RACDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RACDemo/Pods-RACDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8BC0154F2FD388A3F98A48BE /* libPods-RACDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RACDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +137,7 @@
 		2E5D936B1E6E4E0800C34E42 /* RACDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2EAB0A9F1E6EA6E20047252D /* XWGCDManager */,
 				2E5D936F1E6E4E0800C34E42 /* AppDelegate.h */,
 				2E5D93701E6E4E0800C34E42 /* AppDelegate.m */,
 				2E5D93721E6E4E0800C34E42 /* ViewController.h */,
@@ -177,6 +184,17 @@
 				2E5D93931E6E4E0800C34E42 /* Info.plist */,
 			);
 			path = RACDemoUITests;
+			sourceTree = "<group>";
+		};
+		2EAB0A9F1E6EA6E20047252D /* XWGCDManager */ = {
+			isa = PBXGroup;
+			children = (
+				2EAB0AA01E6EA6E20047252D /* XWGCDGroup.h */,
+				2EAB0AA11E6EA6E20047252D /* XWGCDGroup.m */,
+				2EAB0AA21E6EA6E20047252D /* XWGCDManager.h */,
+				2EAB0AA31E6EA6E20047252D /* XWGCDManager.m */,
+			);
+			path = XWGCDManager;
 			sourceTree = "<group>";
 		};
 		3983396855D405FA440361BF /* Pods */ = {
@@ -388,7 +406,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E5D93741E6E4E0800C34E42 /* ViewController.m in Sources */,
+				2EAB0AA51E6EA6E20047252D /* XWGCDManager.m in Sources */,
 				2EAB0A9E1E6E7EEA0047252D /* Flag.m in Sources */,
+				2EAB0AA41E6EA6E20047252D /* XWGCDGroup.m in Sources */,
 				2E5D93711E6E4E0800C34E42 /* AppDelegate.m in Sources */,
 				2E5D936E1E6E4E0800C34E42 /* main.m in Sources */,
 				2EAB0A961E6E64760047252D /* TwoVC.m in Sources */,

@@ -9,13 +9,19 @@
 #import "ViewController.h"
 #import "GlobalHeader.h"
 #import "XWRACTest.h"
-
+#import "XWGCDManager.h"
 #import "TwoVC.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *toTwoVCBtn;
 @property (weak, nonatomic) IBOutlet UITextField *testTF;
 @property (weak, nonatomic) IBOutlet UIButton *sent123NotiBtn;
+@property (weak, nonatomic) IBOutlet UILabel *testTFLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView1;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView2;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView3;
+
 
 @end
 
@@ -32,9 +38,209 @@
 //    [XWRACTest dictSequence];
 //    [XWRACTest dictToModel];
     
-    [self addTargetMethod];
-    [self replaceNotification];
-    [self monitorTextField];
+//    [self addTargetMethod];
+//    [self replaceNotification];
+//    [self monitorTextField];
+//    
+//    [self RACLiftSeector];
+    
+//    [self testTFLabelDefine];
+    
+//    [self commonRACSignal];
+//    [self RACMulticastConnect];
+//    [self RACMulticastConnectReply];
+    
+    [self RACCommand3];
+}
+
+
+- (void)RACBind {
+    RACReplaySubject *replaySubject = [RACReplaySubject subject];
+    [replaySubject bind:^RACSignalBindBlock _Nonnull{
+        return ^RACSignal *(id value, BOOL *stop){
+            return [RACSignal empty];
+        };
+    }];
+}
+
+
+// 使用RAC 命令必须在发送完数据后手动结束发送
+- (void)RACCommand3 {
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        NSLog(@"执行命令传入的 : %@",input);
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            NSLog(@"发送执行结果 nn");
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }];
+    [command execute:@"paramter"];
+    [[command executing] subscribeNext:^(NSNumber * _Nullable x) {
+//        NSLog(@"执行状态:%@",x);
+        if ([x boolValue]) {
+            NSLog(@"命令正在执行");
+        }else{
+            NSLog(@"命令尚未执行/执行完成");
+        }
+    }];
+     
+    [command.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        NSLog(@"获取到执行结果: %@ 进行相应操作",x);
+    }];
+}
+
+// 根据命令中信号源进行操作  必须先订阅在执行命令
+- (void)RACCommand2 {
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        NSLog(@"执行命令传入参数:%@",input);
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:@"result"];
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }];
+    /*
+    [command.executionSignals subscribeNext:^(RACSignal *signal) {
+        [signal subscribeNext:^(id  _Nullable x) {
+            NSLog(@"根据 %@ 进行下一步操作",x);
+        }];
+    }];
+     */
+    // 等价于^   executionSignals.switchToLatest   信号源中最近一个信号(switchToLatest  -> 信号中的信号)
+    [command.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        NSLog(@"根据 %@ 进行下一步操作",x);
+    }];
+    [command execute:@"parameter"];
+}
+
+// RACCommand 接收订阅者发出信号方式一: 直接订阅
+- (void)RACCommand1 {
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        
+        NSLog(@"所转入的参数:%@",input);
+        
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:@"执行命令产生的数据 mm "];
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }];
+    RACSignal *signal = [command execute:@"hahaha"];
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"接收到订阅信号发出的数据: %@",x);
+    }];
+}
+
+- (void)RACMulticastConnectReply {
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"请求数据");
+        [subscriber sendNext:@"zz"];
+        return nil;
+    }];
+    RACMulticastConnection *multicastConnection2 = [signal multicast:[RACReplaySubject subject]];
+    [multicastConnection2.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"订阅数据1 : %@",x);
+    }];
+    [multicastConnection2.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"订阅数据2 : %@",x);
+    }];
+    [multicastConnection2 connect];
+}
+
+/// RACMulticastConnect 解决订阅重复请求数据问题
+- (void)RACMulticastConnect {
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"请求xx数据");
+        [subscriber sendNext:@"xx"];
+        return nil;
+    }];
+    RACMulticastConnection *multicastConnection = [signal publish];
+    [multicastConnection.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"订阅1 : %@",x);
+    }];
+    [multicastConnection.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"订阅2 : %@",x);
+    }];
+    [multicastConnection connect];
+}
+
+- (void)commonRACSignal {
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"commonRACSignal - 请求yy数据");
+        [subscriber sendNext:@"commonRACSignal - yy"];
+        return nil;
+    }];
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"commonRACSignal 订阅1 : %@",x);
+    }];
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"commonRACSignal 订阅2 : %@",x);
+    }];
+    
+}
+
+// 常用 宏
+- (void)testTFLabelDefine {
+    // 给某对象某属性绑定某信号
+    RAC(_testTFLabel,text) = _testTF.rac_textSignal;
+    
+    // 为某对象某属性添加KVO监听
+    [RACObserve(self.testTF, text) subscribeNext:^(id  _Nullable x) {
+        NSLog(@"RACObserve text 属性正在变化:%@",x);
+    }];
+    //等价于^
+    [[self.testTF rac_valuesForKeyPath:@"text" observer:nil] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"rac_valuesForKeyPath text 属性正在变化:%@",x);
+    }];
+    @weakify(self);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
+        self.testTF.text = @"123123";
+    });
+    
+    RACTuple *tuple = RACTuplePack(@"12",@"34");
+    NSLog(@"tuple[1]: %@",tuple[1]);
+    RACTupleUnpack(NSString *key, NSString *value) = tuple;
+    NSLog(@"key: %@  value: %@",key,value);
+}
+
+- (void)RACLiftSeector {
+    RACSignal *loadImage1Signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSURL *url = [NSURL URLWithString:@"http://img1.36706.com/lipic/allimg/140915/0114515533-3.jpg"];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [subscriber sendNext:image];
+        NSLog(@"图片 1 下载线程:%@",[NSThread currentThread]);
+        return nil;
+    }];
+    RACSignal *loadImage1Signa2 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSURL *url = [NSURL URLWithString:@"http://img1.36706.com/lipic/allimg/140915/0114514437-7.jpg"];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [subscriber sendNext:image];
+        NSLog(@"图片 2 下载线程:%@",[NSThread currentThread]);
+        return nil;
+    }];
+    RACSignal *loadImage1Signa3 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSURL *url = [NSURL URLWithString:@"http://img1.36706.com/lipic/allimg/140915/0114516213-5.jpg"];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:imageData];
+        [subscriber sendNext:image];
+        NSLog(@"图片 3 下载线程:%@",[NSThread currentThread]);
+        return nil;
+    }];
+    
+    [self rac_liftSelector:@selector(showImages:image2:image3:) withSignals:loadImage1Signal,loadImage1Signa2,loadImage1Signa3, nil];
+}
+
+- (void)showImages:(UIImage *)image1 image2:(UIImage *)image2 image3:(UIImage *)image3 {
+//    self.imageView1.contentMode = UIViewContentModeScaleAspectFit;
+//    self.imageView2.contentMode = UIViewContentModeScaleAspectFit;
+//    self.imageView3.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView1.image = image1;
+    self.imageView2.image = image2;
+    self.imageView3.image = image3;
+    NSLog(@"展示图片的线程:%@",[NSThread currentThread]);
 }
 
 - (void)monitorTextField {
@@ -53,7 +259,9 @@
 //    [self.toTwoVCBtn addTarget:self action:@selector(toTwoVC) forControlEvents:UIControlEventTouchUpInside];
     
     // RAC 监听按钮点击  代替如上方法
+    @weakify(self);
     [[self.toTwoVCBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
         [self toTwoVC];
     }];
     
