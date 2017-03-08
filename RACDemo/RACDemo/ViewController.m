@@ -44,7 +44,7 @@
 //    [self replaceNotification];
 //    [self monitorTextField];
 //    
-//    [self RACLiftSeector];
+    [self RACLiftSeector];
     
 //    [self testTFLabelDefine];
     
@@ -61,7 +61,7 @@
 //    [self mergeSignal];
     
 //    [self zipSignal];
-//    [self zipSignal2];
+    [self zipSignal2];
 //    [self reduceSignal];
 //    [self reduceSignal2];
 //    [self filterSignal];
@@ -71,7 +71,7 @@
 //    [self takeUntilSignal];
 //    [self distinctUntilChangedSignal];
 //    [self skipSignal];
-    [self sendSignal];
+//    [self sendSignal];
 }
 
 // 信号秩序

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qN8-o7-MOF">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cdh-EF-9P4">
+                                <rect key="frame" x="37.5" y="199" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="E2F-Ud-CvS"/>
+                                    <constraint firstAttribute="height" constant="30" id="cEB-52-ZYQ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IW-Hr-F1b">
+                                <rect key="frame" x="37" y="273" width="300" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtu-0W-oaK">
+                                <rect key="frame" x="164" y="318" width="47" height="30"/>
+                                <state key="normal" title="  登录  "/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-aH-1Lf">
+                                <rect key="frame" x="51" y="372" width="272" height="253"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4IW-Hr-F1b" firstAttribute="centerX" secondItem="Cdh-EF-9P4" secondAttribute="centerX" id="0zJ-Pb-PYf"/>
+                            <constraint firstItem="mtu-0W-oaK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9iO-nt-F5v"/>
+                            <constraint firstItem="4IW-Hr-F1b" firstAttribute="width" secondItem="Cdh-EF-9P4" secondAttribute="width" id="Ew3-xt-4aI"/>
+                            <constraint firstItem="4IW-Hr-F1b" firstAttribute="height" secondItem="Cdh-EF-9P4" secondAttribute="height" id="FVV-Rv-LL7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QBf-aH-1Lf" secondAttribute="bottom" constant="42" id="FVu-6M-FsD"/>
+                            <constraint firstItem="4IW-Hr-F1b" firstAttribute="top" secondItem="Cdh-EF-9P4" secondAttribute="bottom" constant="44" id="KpX-xz-E4N"/>
+                            <constraint firstItem="mtu-0W-oaK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SEk-Tv-rUS"/>
+                            <constraint firstItem="Cdh-EF-9P4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dWU-MI-w60"/>
+                            <constraint firstItem="Cdh-EF-9P4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="135" id="gBC-pA-ThW"/>
+                            <constraint firstItem="QBf-aH-1Lf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="51" id="iXL-05-gpg"/>
+                            <constraint firstAttribute="trailing" secondItem="QBf-aH-1Lf" secondAttribute="trailing" constant="52" id="jPH-id-iBZ"/>
+                            <constraint firstItem="QBf-aH-1Lf" firstAttribute="top" secondItem="mtu-0W-oaK" secondAttribute="bottom" constant="24" id="zor-uf-JaB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1xP-a3-JJe"/>
+                    <connections>
+                        <outlet property="accoundTF" destination="Cdh-EF-9P4" id="pCk-RL-Ubj"/>
+                        <outlet property="imageView" destination="QBf-aH-1Lf" id="jFZ-PZ-3UH"/>
+                        <outlet property="loginBtn" destination="mtu-0W-oaK" id="xbb-nA-fEV"/>
+                        <outlet property="pwdTF" destination="4IW-Hr-F1b" id="ZVM-YW-6dX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iyp-OS-922">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qN8-o7-MOF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZKo-Ja-iYV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ykw-WM-kav"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RU0-7Y-bPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
