@@ -70,7 +70,25 @@
 //    [self takeLastSignal];
 //    [self takeUntilSignal];
 //    [self distinctUntilChangedSignal];
-    [self skipSignal];
+//    [self skipSignal];
+    [self sendSignal];
+}
+
+// 信号秩序
+- (void)sendSignal {
+
+    [[[[RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"发送数据 1");
+        [subscriber sendNext:@1];
+        [subscriber sendCompleted];
+        return nil;
+    }] doNext:^(id  _Nullable x) {
+        NSLog(@"do next : %@",x);
+    }] doCompleted:^{
+        NSLog(@"doCompleted");
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"接收订阅数据 : %@",x);
+    }];
 }
 
 // skip 跳过 前几次 信号后订阅并处理
