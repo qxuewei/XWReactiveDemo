@@ -65,6 +65,12 @@
                                 <rect key="frame" x="0.0" y="500" width="224" height="129"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P7V-hS-3B8">
+                                <rect key="frame" x="37.5" y="180" width="300" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -75,16 +81,19 @@
                             <constraint firstAttribute="trailing" secondItem="2a1-JK-t6p" secondAttribute="trailing" id="7KT-2X-MNG"/>
                             <constraint firstItem="2a1-JK-t6p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8I9-Fu-cNw"/>
                             <constraint firstItem="dDH-xF-KeQ" firstAttribute="leading" secondItem="MVZ-8C-S7t" secondAttribute="trailing" constant="2" id="8Om-75-aan"/>
+                            <constraint firstItem="q9W-HT-E59" firstAttribute="top" secondItem="P7V-hS-3B8" secondAttribute="bottom" constant="14" id="ADF-lC-udm"/>
                             <constraint firstItem="lnF-Za-Diw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GkK-z6-uKr"/>
                             <constraint firstItem="2a1-JK-t6p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="IFY-VM-5ql"/>
                             <constraint firstAttribute="trailing" secondItem="dDH-xF-KeQ" secondAttribute="trailing" id="QIS-Uw-DEq"/>
                             <constraint firstItem="dDH-xF-KeQ" firstAttribute="leading" secondItem="lnF-Za-Diw" secondAttribute="trailing" constant="2" id="SIb-0u-bFh"/>
+                            <constraint firstItem="q9W-HT-E59" firstAttribute="leading" secondItem="P7V-hS-3B8" secondAttribute="leading" id="T1v-eY-Jik"/>
                             <constraint firstItem="lnF-Za-Diw" firstAttribute="top" secondItem="MVZ-8C-S7t" secondAttribute="bottom" id="W0L-Dy-dmY"/>
                             <constraint firstItem="YOB-Yi-Jna" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WL6-hk-yZy"/>
                             <constraint firstItem="MVZ-8C-S7t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bu8-mf-3PP"/>
                             <constraint firstItem="YOB-Yi-Jna" firstAttribute="top" secondItem="q9W-HT-E59" secondAttribute="bottom" constant="64" id="jbF-iY-K3k"/>
                             <constraint firstItem="dDH-xF-KeQ" firstAttribute="top" secondItem="MVZ-8C-S7t" secondAttribute="top" id="nFU-3J-C6k"/>
                             <constraint firstItem="lnF-Za-Diw" firstAttribute="bottom" secondItem="dDH-xF-KeQ" secondAttribute="bottom" id="p9N-3g-pjF"/>
+                            <constraint firstItem="q9W-HT-E59" firstAttribute="trailing" secondItem="P7V-hS-3B8" secondAttribute="trailing" id="s6T-cw-VNm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dDH-xF-KeQ" secondAttribute="bottom" constant="38" id="vB3-0G-Z8C"/>
                         </constraints>
                     </view>
@@ -95,6 +104,7 @@
                         <outlet property="imageView3" destination="dDH-xF-KeQ" id="swm-kL-zN7"/>
                         <outlet property="sent123NotiBtn" destination="cW4-Q4-5fI" id="kZc-da-TLr"/>
                         <outlet property="testTF" destination="q9W-HT-E59" id="SGB-aL-R5e"/>
+                        <outlet property="testTF2" destination="P7V-hS-3B8" id="xFq-SC-NMb"/>
                         <outlet property="testTFLabel" destination="2a1-JK-t6p" id="sG7-Tm-bP1"/>
                         <outlet property="toTwoVCBtn" destination="YOB-Yi-Jna" id="Jln-B6-tEa"/>
                     </connections>

@@ -11,5 +11,6 @@
 
 #import "ReactiveObjC.h"
 #import "NSObject+RACKVOWrapper.h"
+#import "RACReturnSignal.h"
 
 #endif /* GlobalHeader_h */
