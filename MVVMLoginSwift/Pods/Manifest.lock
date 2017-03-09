@@ -1,0 +1,15 @@
+PODS:
+  - ReactiveSwift (1.1.0):
+    - Result (~> 3.1)
+  - Result (3.2.1)
+
+DEPENDENCIES:
+  - ReactiveSwift
+
+SPEC CHECKSUMS:
+  ReactiveSwift: 2f4e4a02e5a5c87ea63f5fe667163ce2a67cbb57
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+
+PODFILE CHECKSUM: dc01789488f95fee763cd8f2fd84f3482b545d67
+
+COCOAPODS: 1.2.1.beta.1
