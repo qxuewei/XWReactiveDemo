@@ -44,7 +44,7 @@
 //    [self replaceNotification];
 //    [self monitorTextField];
 //    
-    [self RACLiftSeector];
+//    [self RACLiftSeector];
     
 //    [self testTFLabelDefine];
     
@@ -57,11 +57,11 @@
 //    [self RACMap];
 //    [self flattenMap2];
 //    [self concatSignal];
-//    [self thenSignal];
+    [self thenSignal];
 //    [self mergeSignal];
     
 //    [self zipSignal];
-    [self zipSignal2];
+//    [self zipSignal2];
 //    [self reduceSignal];
 //    [self reduceSignal2];
 //    [self filterSignal];
@@ -72,6 +72,7 @@
 //    [self distinctUntilChangedSignal];
 //    [self skipSignal];
 //    [self sendSignal];
+//    [self sequence];
 }
 
 // 信号秩序
@@ -194,6 +195,7 @@
     }];
     // 为某对象某参数绑定一个信号
     RAC(_toTwoVCBtn, enabled) = reduceSignal;
+    
 }
 
 - (void)reduceSignal {
@@ -662,8 +664,16 @@
     [self.navigationController pushViewController:twoVC animated:YES];
 }
 
-
-
+- (void)sequence {
+    NSArray *array = @[@"qxw",@"wangkehui",@"lovke"];
+    RACSequence *sequece = array.rac_sequence;
+    RACSignal *sequeceSignal = sequece.signal;
+    [sequeceSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    
+}
 
 
 @end
